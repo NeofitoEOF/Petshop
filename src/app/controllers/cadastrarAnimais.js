@@ -16,8 +16,12 @@ class cadastrarAnimais {
 
   async show(req, res) {
     const { id } = req.params
-    const buscarApenasUmAnimal = await cadastrarAnimaisServices.listarApenasUmAnimal(id);
-    return res.json(buscarApenasUmAnimal);
+      const buscarApenasUmAnimal = await cadastrarAnimaisServices.listarApenasUmAnimal(id);
+      if (buscarApenasUmAnimal !== null) {
+        return res.json(buscarApenasUmAnimal);
+      } if (buscarApenasUmAnimal ===  null) {
+        return res.json('Animal Não encontrado!!')
+      }
   }
 
   async stoge(req, res) {
