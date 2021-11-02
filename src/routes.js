@@ -7,5 +7,6 @@ rotas.get("/registrar", cadastrarAnimais.index);
 rotas.get("/registrar/:id", cadastrarAnimais.show);
 rotas.post("/registrar", cadastrarAnimais.stoge);
 rotas.put("/registrar/:id", cadastrarAnimais.update);
+rotas.delete("/registrar/:id", cadastrarAnimais.delete);
 
 module.exports = rotas;
