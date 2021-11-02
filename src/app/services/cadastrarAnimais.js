@@ -34,6 +34,23 @@ class cadastrarAnimais {
       return error;
     }
   }
+
+  async atualizarAnimal(id, infoAnimais) {
+
+    console.log(infoAnimais.nome)
+
+    const animalAtualizado = await prisma.petshop.update({
+      where: {
+        id: Number(id),
+      },
+      update: {
+        nome: infoAnimais.nome
+      },
+    });
+
+    console.log(animalAtualizado)
+  }
+
 }
 
 module.exports = new cadastrarAnimais();
