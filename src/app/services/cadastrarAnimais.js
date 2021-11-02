@@ -36,21 +36,32 @@ class cadastrarAnimais {
   }
 
   async atualizarAnimal(id, infoAnimais) {
-
-    console.log(infoAnimais.nome)
-
-    const animalAtualizado = await prisma.petshop.update({
-      where: {
-        id: Number(id),
-      },
-      update: {
-        nome: infoAnimais.nome
-      },
-    });
-
-    console.log(animalAtualizado)
+    try {
+      const animalAtualizado = await prisma.petshop.update({
+        where: {
+          id: Number(id),
+        },
+        update: {
+          nome: infoAnimais.nome,
+        },
+      });
+      return animalAtualizado;
+    } catch (error) {
+      return error;
+    }
   }
 
+  async apagarAnimal(id) {
+    try {
+      const animalDeletado = await prisma.petshop.deleteMany({
+        where: {
+          id: Number(id),
+        },
+      });
+    } catch (error) {
+      return error;
+    }
+  }
 }
 
 module.exports = new cadastrarAnimais();
