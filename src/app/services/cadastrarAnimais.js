@@ -31,7 +31,7 @@ class cadastrarAnimais {
       });
       return novoAnimal;
     } catch (error) {
-      return error;
+      throw new Error(error);
     }
   }
 
@@ -47,7 +47,7 @@ class cadastrarAnimais {
       });
       return animalAtualizado;
     } catch (error) {
-      return error;
+      throw new Error(error);
     }
   }
 
@@ -59,7 +59,7 @@ class cadastrarAnimais {
         },
       });
     } catch (error) {
-      return error;
+      throw new Error(error);
     }
   }
 }

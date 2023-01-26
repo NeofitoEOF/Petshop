@@ -9,7 +9,7 @@ class cadastrarAnimais {
       return res.status(201).json(buscarAnimais);
     } catch (error) {
       if (!buscarAnimais) {
-        return res.status(401).json({error: 'Animal Não encontrado'});
+        throw new Error(res.status(401).json({error: 'Animal Não encontrado'})); 
       }
     }
   }
@@ -20,7 +20,7 @@ class cadastrarAnimais {
       if (buscarApenasUmAnimal !== null) {
         return res.status(201).json(buscarApenasUmAnimal);
       } if (buscarApenasUmAnimal ===  null) {
-        return res.json('Animal Não encontrado!!')
+        throw new Error(res.json('Animal Não encontrado!!')) ;
       }
   }
 
@@ -30,7 +30,7 @@ class cadastrarAnimais {
         const resultado = await cadastrarAnimaisServices.criarAnimais(animais)
         return res.status(201).json(resultado);
       } catch (error) {
-      return res.status(400).json({error: 'Não foi possivel salvar animal'});
+        throw new Error(res.status(400).json({error: 'Não foi possivel salvar animal'}));
     }
   }
 
@@ -41,7 +41,7 @@ class cadastrarAnimais {
       const animalAtualizado = await cadastrarAnimaisServices.atualizarAnimal(id, informacoesAnimal);
       res.status(201).json(animalAtualizado);
     } catch (error) {
-      return res.status(404).json({error: 'Animal inexistente'});
+      throw new Error(res.status(404).json({error: 'Animal inexistente'}));
     };
   }
 
@@ -51,7 +51,7 @@ class cadastrarAnimais {
       const animalDeletado = await cadastrarAnimaisServices.apagarAnimal(id);
       res.status(201).json('Animal Deletado');
     } catch (error) {
-      return res.status(404).json({error: 'Animal inexistente'});
+      throw new Error(res.status(404).json({error: 'Animal inexistente'}));
     }
   }
 
