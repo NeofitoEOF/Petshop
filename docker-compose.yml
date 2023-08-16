@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+  api:
+    image: Petshop-API
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: Petshop-API
+    command: bash -c "yarn && yarn start"
+    restart: always
+    volumes:
+      - .:/app
+    working_dir: '/app'
+    ports:
+      - '80:3000'
+    networks:
+      exchange-network:
+        ipv4_address: 1.0.0.2
+
+  user-db:
+    image: Petshop-db
+    container_name: Petshop-db
+
+    expose:
+      - '3306'
+    ports:
+      - "3306:3306"
+
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: Petshop
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+
+    volumes:
+      - mysql:/var/lib/mysql
+
+    networks:
+      - prod
+
+
+networks:
+  exchange-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 1.0.0.0/24
