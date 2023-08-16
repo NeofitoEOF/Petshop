@@ -1,3 +1,7 @@
+const { PrismaClient } = require(".prisma/client");
+
+const prisma = new PrismaClient();
+
 class apagarAnimaisService {
   async apagarAnimal(id) {
     try {
