@@ -1,10 +1,10 @@
-const cadastrarAnimaisServices = require("../services/cadastrarAnimais");
+import {criarAnimais} from "../services/cadastrarAnimaisService";
 
 class cadastrarControllerAnimais {
   async creater(req, res) {
     const animais = req.body;
     try {
-      const resultado = await cadastrarAnimaisServices.criarAnimais(animais);
+      const resultado = await criarAnimais(animais);
       return res.status(201).json(resultado);
     } catch (error) {
       throw new Error(

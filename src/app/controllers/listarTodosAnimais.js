@@ -1,9 +1,11 @@
+import {listarAnimais} from '../services/listarTodosAnimaisService';
+
 class listarTodosAnimais {
   async listarTodos(req, res) {
     const { id } = req.params;
     try {
-      const buscarAnimais = await cadastrarAnimaisServices.listarAnimais(id);
-      return res.status(201).json(buscarAnimais);
+      const buscarAnimais = await listarAnimais(id);
+      return res.status(202).json(buscarAnimais);
     } catch (error) {
       if (!buscarAnimais) {
         throw new Error(
