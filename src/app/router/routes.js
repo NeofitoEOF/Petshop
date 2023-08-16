@@ -1,12 +1,16 @@
 const { Router } = require("express");
-const cadastrarAnimais = require("./app/controllers/cadastrarAnimais");
+const cadastrarControllerAnimais = require("../controllers/cadastrarAnimais");
+const listarTodosAnimais = require("../controllers/listarTodosAnimais");
+const atualizarControllersAnimais = require("../controllers/atualizarAnimais");
+const deletarControllersAnimais = require("../controllers/deletarAnimais");
+const listarApenasUmAnimail = require("../controllers/listarApenasUmAnimais");
 
 const rotas = Router();
 
-rotas.get("/registrar", cadastrarAnimais.index);
-rotas.get("/registrar/:id", cadastrarAnimais.show);
-rotas.post("/registrar", cadastrarAnimais.stoge);
-rotas.put("/registrar/:id", cadastrarAnimais.update);
-rotas.delete("/registrar/:id", cadastrarAnimais.delete);
+rotas.get("/registrar", listarTodosAnimais.listarTodos);
+rotas.get("/registrar/:id", listarApenasUmAnimail.listar);
+rotas.post("/registrar", cadastrarControllerAnimais.creater);
+rotas.put("/registrar/:id", atualizarControllersAnimais.atualizar);
+rotas.delete("/registrar/:id", deletarControllersAnimais.apagar);
 
 module.exports = rotas;
