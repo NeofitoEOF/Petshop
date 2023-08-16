@@ -1,6 +1,6 @@
-const { PrismaClient } = require(".prisma/client");
+import {executarPrisma} from '../types/configPristma';
 
-const prisma = new PrismaClient();
+const prisma = executarPrisma();
 
 class listarApenasUmAnimaisService {
   async listarApenasUmAnimal(idAnimal) {
