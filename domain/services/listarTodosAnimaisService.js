@@ -1,4 +1,4 @@
-import {executarPrisma} from '../types/configPristma';
+import {executarPrisma} from '../types/configPrisma';
 
 const prisma = executarPrisma();
 
