@@ -1,4 +1,5 @@
 import {listarAnimais} from '../services/listarTodosAnimaisService';
+import { animalNaoEncontrado } from "../erros/mensagemErros";
 
 class listarTodosAnimais {
   async listarTodos(req, res) {
@@ -9,7 +10,7 @@ class listarTodosAnimais {
     } catch (error) {
       if (!buscarAnimais) {
         throw new Error(
-          res.status(401).json({ error: "Animal Não encontrado" })
+          res.status(401).json({ error: animalNaoEncontrado })
         );
       }
     }

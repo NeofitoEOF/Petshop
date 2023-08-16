@@ -1,4 +1,5 @@
 import {criarAnimais} from "../services/cadastrarAnimaisService";
+import { naoFoiPossivelSalvar } from "../erros/mensagemErros";
 
 class cadastrarControllerAnimais {
   async creater(req, res) {
@@ -8,7 +9,7 @@ class cadastrarControllerAnimais {
       return res.status(201).json(resultado);
     } catch (error) {
       throw new Error(
-        res.status(400).json({ error: "Não foi possivel salvar animal" })
+        res.status(400).json({ error: naoFoiPossivelSalvar })
       );
     }
   }
