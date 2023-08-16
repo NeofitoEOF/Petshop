@@ -10,7 +10,7 @@ const rotas = Router();
 rotas.get("/registrar", listarTodosAnimais.listarTodos);
 rotas.get("/registrar/:id", listarApenasUmAnimail.listar);
 rotas.post("/registrar", cadastrarControllerAnimais.creater);
-rotas.put("/registrar/:id", atualizarControllersAnimais.atualizar);
+rotas.put("/registrar/:id", atualizarControllersAnimais.update);
 rotas.delete("/registrar/:id", deletarControllersAnimais.apagar);
 
 module.exports = rotas;
