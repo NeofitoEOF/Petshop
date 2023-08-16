@@ -53,7 +53,7 @@ class cadastrarAnimais {
 
   async apagarAnimal(id) {
     try {
-      const animalDeletado = await prisma.petshop.deleteMany({
+      await prisma.petshop.deleteMany({
         where: {
           id: Number(id),
         },
